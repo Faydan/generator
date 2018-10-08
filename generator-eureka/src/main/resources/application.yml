@@ -1,0 +1,21 @@
+# 端口号
+server:
+  port: 8761
+
+eureka:
+  # 服务名
+  instance:
+    hostname: generator-eureka
+  client:
+    # 禁止自己注册自己
+    register-with-eureka: false
+    fetch-registry: false
+    # 负载配置地址,如果配置负载,这里指向其他eureka地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  server:
+    # 关闭自我保护, 清理间隔时间
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+
+
